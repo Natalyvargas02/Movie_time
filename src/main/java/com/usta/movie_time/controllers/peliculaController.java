@@ -37,7 +37,7 @@ public class peliculaController {
     }
 
     @PostMapping(value = "crearpelicula")
-    public String guardarpelicula(@Valid peliculaEntity pelicula, BindingResult result, SessionStatus
+    public String guardarpelicula(@Valid @ModelAttribute peliculaEntity pelicula, BindingResult result, SessionStatus
             status,@RequestParam("file") MultipartFile imagen)
 
     {
@@ -60,9 +60,17 @@ public class peliculaController {
             }
         }
         pelicula.setEstado(true);
+        ipeliculaService.save(pelicula);
         status.setComplete();
         return "redirect:/listarpeliculas";
     }
+    @GetMapping("/listarpelicula/{id}")
+    public String listarImagenesByiD(@PathVariable(value="id")Long id, Model model){
+        model.addAttribute("titulo","Editar pelicula");
+        model.addAttribute("imagenesId",ipeliculaService.findOne(id));
+        return "detalleImagenes";
+    }
+
     @RequestMapping(value = "/eliminarpelicula/{id}") //nuevo
     public String eliminarById(@PathVariable(value = "id") Long id){
         if(id>0){
@@ -72,7 +80,6 @@ public class peliculaController {
         }
         return "redirect:/listarpeliculas";
     }
-
 
     @RequestMapping(value = "/cambiarEstadopelicula/{id}")
     public String cambiarEstadopelicula(@PathVariable(value = "id")Long id){
