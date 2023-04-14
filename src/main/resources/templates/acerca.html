@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{layout/layout :: head}"></head>
+<body>
+
+<nav th:replace="~{layout/layout :: navbar}"></nav>
+
+<div class="jumbotron">
+  <h1 class="display-4">Software de Prueba</h1>
+  <p class="lead">Procesos CRUD con PostgreSQL y Spring.</p>
+  <hr class="my-4">
+  <p>Elaborado por el grupo de Desarrollo Empresarial.</p>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">SCRUM</h5>
+        <p class="card-text">Marco de Trabajo</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">IntelliJIDEA</h5>
+        <p class="card-text">Framework de Trabajo - Java enterprice.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br/>
+<br/>
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Clickup</h5>
+        <p class="card-text">Gestión de Proyectos.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Git</h5>
+        <p class="card-text">Control de Versiones.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br/>
+<footer th:replace="~{layout/layout :: footer}"></footer>
+</body>
+</html>

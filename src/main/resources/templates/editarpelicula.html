@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head th:replace="~{layout/layout :: head}"></head>
+<body>
+<h1 th:text="${titulo}" class="page-content"></h1>
+<br/>
+<div class="container">
+    <form th:object="${peliculaActualizar}" th:action="@{/editarpelicula/{id}(id=${peliculaActualizar.idpelicula})}" method="post">
+        <div class="form-group">
+            <label for="titulo" class="control-label">titulo</label>
+            <input id="titulo" type="text" class="form-control" th:field="*{titulo}" placeholder="Pantera negra" required="required"/>
+            <small>Escribir el nit</small>
+        </div>
+
+        <div class="form-group">
+            <label for="sinopsis" class="control-label">sinopsis</label>
+            <input id="sinopsis" type="text" class="form-control" th:field="*{sinopsis}" placeholder="Universidad Ejemplo" required="required"/>
+            <small>Escribir nombre de universidad</small>
+        </div>
+
+        <div class="form-group">
+            <label for="fecha_estreno" class="control-label">Fecha de Estreno</label>
+            <input id="fecha_estreno" type="date" class="form-control" th:field="*{fecha_estreno}" required="required"/>
+            <small>Seleccionar fecha</small>
+        </div>
+
+        <div class="form-group">
+            <label for="youtube_trailer_id" class="control-label">youtube_trailer_id</label>
+            <input id="youtube_trailer_id" type="text" class="form-control" th:field="*{youtube_trailer_id}" placeholder="Calle # ejemplo carrera ejemplo" required="required"/>
+            <small>Escribir direccion</small>
+        </div>
+
+        <div class="form-group">
+            <label for="imagen" class="form-label">imagen</label>
+            <input class="form-control"  type="file" name="file" id="imagen" accept="image/pmg image/jpg">
+        </div>
+
+        <div class="form-group">
+            <div class="form-group">
+                <input type="submit" value="Actualizar" class="btn btn-success" >
+            </div>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
