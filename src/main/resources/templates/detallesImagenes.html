@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="layout/layout :: head"></head>
+<body>
+<nav th:replace="layout/layout :: navbar"></nav>
+<h1 class="page-content" th:text="${titulo}"></h1>
+<br/>
+<div class="galeria">
+    <div class="card-group bg-light">
+        <div class="card-header bg-dark text-white"></div>
+        <div class="card-body">
+            <img class="img-thumbnail rounded float"
+                 th:src="@{'/images/' + ${imagen.imagen}}"
+                 th:alt="${imagen.sinopsis}"
+                 style="max-width:30%">
+
+        </div>
+
+        <ul class="list-group">
+            <li class="list-group-item" th:text="'Titulo: ' +${imagen.titulo}"></li>
+            <li class="list-group-item" th:text="'sinopsis: ' +${imagen.sinopsis}"></li>
+            <li class="list-group-item" th:text="'fecha de Estreno: ' +${imagen.fecha_estreno}"></li>
+        </ul>
+    </div>
+</div>
+<br/>
+<br/>
+
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

@@ -3,18 +3,22 @@ package com.usta.movie_time.controllers;
 import com.usta.movie_time.entities.peliculaEntity;
 import com.usta.movie_time.models.services.IpeliculaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 @Controller
 public class peliculaController {
@@ -64,11 +68,11 @@ public class peliculaController {
         status.setComplete();
         return "redirect:/listarpeliculas";
     }
-    @GetMapping("/listarpelicula/{id}")
+    @GetMapping("/detallesImagenes/{id}")
     public String listarImagenesByiD(@PathVariable(value="id")Long id, Model model){
-        model.addAttribute("titulo","Editar pelicula");
-        model.addAttribute("imagenesId",ipeliculaService.findOne(id));
-        return "detalleImagenes";
+        model.addAttribute("titulo","   Detalle pelicula");
+        model.addAttribute("imagen",ipeliculaService.findOne(id));
+        return "detallesImagenes";
     }
 
     @RequestMapping(value = "/eliminarpelicula/{id}") //nuevo
@@ -97,6 +101,23 @@ public class peliculaController {
         model.addAttribute("peliculaActualizar",ipeliculaService.findOne(id));
         return "editarpelicula";
     }
+
+    ////////////////////
+    @PostMapping("/listarpeliculas/nuevo")
+    public ModelAndView registrarPelicula(@Validated peliculaEntity pelicula, BindingResult bindingResult) {
+        if(bindingResult.hasErrors() || pelicula.getImagen().isEmpty()) {
+            if(pelicula.getImagen().isEmpty()) {
+                bindingResult.rejectValue("imagen","MultipartNotEmpty");
+            }
+            return new ModelAndView("pelicula/index")
+                    .addObject("pelicula",pelicula);
+        }
+        ipeliculaService.save(pelicula);
+        return new ModelAndView("redirect:/listarpeliculas");
+    }
+
+///////////////////////
+
     @PostMapping("editarpelicula/{id}")
     public String actualizarpelicula(
             @PathVariable(value = "id") Long id,

@@ -22,10 +22,10 @@ public class pageController {
         return "AdiosMundo";
     }
 
-    @GetMapping("master")
-    public String master(Model model){
-        model.addAttribute("titulo","master");
-        return "master";
+    @GetMapping("peliculas")
+    public String peliculas(Model model){
+        model.addAttribute("titulo","index");
+        return "peliculas";
     }
 
 

@@ -23,7 +23,10 @@
         </thead>
         <tbody>
         <tr th:each="pelicula: ${peliculas}" th:if="${pelicula.estado} ==true">
-            <td th:text="${pelicula.idpelicula}"></td>
+            <td>
+                <a class="btn btn-info" th:href="@{/detallesImagenes/{id}(id=${pelicula.idpelicula})}"
+                   th:text="${pelicula.idpelicula}"></a>
+            </td>
             <td th:text="${pelicula.titulo}"></td>
             <td th:text="${pelicula.sinopsis}"></td>
             <td th:text="${pelicula.fecha_estreno}"></td>
