@@ -32,7 +32,7 @@
             <td th:text="${pelicula.fecha_estreno}"></td>
             <td th:text="${pelicula.youtube_trailer_id}"></td>
             <td th:text="${pelicula.estado}"></td>
-            <td th:text="${pelicula.imagen}"></td>
+            <td><img th:src="@{'/images/'} + ${pelicula.imagen}"  alt="img"  class="img-thumbnail" /></td>
 
             <td><a th:href="@{/eliminarpelicula/} + ${pelicula.idpelicula}" class="btn btn-danger btn-xs" th:text="'Eliminar'" onclick="return confirm //nuevo
           ('¿Estas seguro de querer eliminar el registro?')"></a></td>

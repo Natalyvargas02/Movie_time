@@ -3,7 +3,9 @@ package com.usta.movie_time.controllers;
 import com.usta.movie_time.entities.peliculaEntity;
 import com.usta.movie_time.models.services.IpeliculaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,7 +20,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 
 @Controller
 public class peliculaController {
@@ -103,6 +104,13 @@ public class peliculaController {
     }
 
     ////////////////////
+
+    @GetMapping("/peliculas/nuevo")
+    public ModelAndView mostrarFormularioDeNuevaPelicula() {
+        return new ModelAndView("admin/nueva-pelicula")
+                .addObject("pelicula", new peliculaEntity());
+    }
+
     @PostMapping("/listarpeliculas/nuevo")
     public ModelAndView registrarPelicula(@Validated peliculaEntity pelicula, BindingResult bindingResult) {
         if(bindingResult.hasErrors() || pelicula.getImagen().isEmpty()) {
@@ -117,7 +125,6 @@ public class peliculaController {
     }
 
 ///////////////////////
-
     @PostMapping("editarpelicula/{id}")
     public String actualizarpelicula(
             @PathVariable(value = "id") Long id,

@@ -23,29 +23,33 @@
       <thead>
       <tr>
         <th></th>
-        <th>Pelicula</th>
-        <th>F.Estreno</th>
+        <th></th>
+        <th style="margin-left: 19px;">F.Estreno</th>
         <th></th>
       </tr>
       </thead>
       <tbody>
       <tr th:each="pelicula : ${peliculas}" th:object="${peliculas}">
-        <td  style="max-width:30%">
-          <a th:src="@{'/images/' + ${imagen.imagen}}" data-fancybox>
-            <img th:src="@{'/images/' + ${imagen.imagen}}" alt="" class="img-thumbnail w-100">
+        <td  style="max-width:30%; width: 18%; height: 25%;">
+          <a th:src="@{'/images/' + ${pelicula.imagen}}" data-fancybox>
+            <img th:src="@{'/images/' + ${pelicula.imagen}}" alt="img"  class="img-thumbnail">
           </a>
         </td>
-        <td>
-          <div th:text="${pelicula.titulo}"> class="fs-5 fw-bold"></div>
+        <td style="width: 65%;">
+          <div th:text="${pelicula.titulo}"  class="fs-5 fw-bold"></div>
           <p th:text="${pelicula.sinopsis}"></p>
         </td>
-        <td th:text="*{#temporals.format(fechaEstreno,'dd/MM/yyyy')}"></td>
+        <td>
+          <input type="date" id="start" name="trip-start"
+                 th:value="${pelicula.fecha_estreno}" readonly style="border: 0;" />
+        </td>
         <td class="text-end">
           <a th:href="@{/editarpelicula/{id}(id=${pelicula.idpelicula})}">Editar</a>
-          <a href="javascript:void(0)" class="text-danger ms-3" th:onclick="'@{/eliminarpelicula/} + ${pelicula.idpelicula}'">Eliminar</a>
-          <form th:id="@{/eliminarpelicula/} + ${pelicula.idpelicula}" th:action="@{/listarpeliculas/peliculas/{id}/pelicula.idpelicula" method="post" class="d-none">
-          </form>
+          <a href="javascript:void(0)" class="text-danger ms-3" th:href="@{/eliminarpelicula/} + ${pelicula.idpelicula}">Eliminar</a>
+
         </td>
+
+
       </tr>
       </tbody>
     </table>
