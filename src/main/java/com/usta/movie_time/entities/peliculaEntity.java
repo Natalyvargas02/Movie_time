@@ -3,10 +3,12 @@ package com.usta.movie_time.entities;
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "peliculas")
@@ -35,17 +37,17 @@ public class peliculaEntity implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fecha_estreno;
 
+    @NotEmpty
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "genero_pelicula",
+            joinColumns = @JoinColumn(name="id_pelicula"),
+            inverseJoinColumns = @JoinColumn(name="id_genero"))
+    private List<generoEntity> generos;
+
     @NotNull
     @Size(min = 1, max = 20)
     @Column(name = "youtube_trailer_id")
     private String youtube_trailer_id;
-
-    public String getImagen() {
-        return imagen;
-    }
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
 
     @NotNull
     @Column(name = "imagen")
@@ -54,6 +56,14 @@ public class peliculaEntity implements Serializable {
     @NotNull
     @Column(name = "estado")
     private Boolean estado;
+
+    public String getImagen() {
+        return imagen;
+    }
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
 
     public Boolean getEstado() {
         return estado;
@@ -103,5 +113,12 @@ public class peliculaEntity implements Serializable {
         this.youtube_trailer_id = youtube_trailer_id;
     }
 
+    public List<generoEntity> getGeneros() {
+        return generos;
+    }
+
+    public void setGeneros(List<generoEntity> generos) {
+        this.generos = generos;
+    }
 }
 

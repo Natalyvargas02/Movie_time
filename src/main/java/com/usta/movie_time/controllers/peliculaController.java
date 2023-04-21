@@ -1,11 +1,9 @@
 package com.usta.movie_time.controllers;
 
 import com.usta.movie_time.entities.peliculaEntity;
+import com.usta.movie_time.models.services.IgeneroService;
 import com.usta.movie_time.models.services.IpeliculaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,6 +25,9 @@ public class peliculaController {
     @Autowired
     private IpeliculaService ipeliculaService;
 
+    @Autowired
+    private IgeneroService igeneroService;
+
     @GetMapping("listarpeliculas")
     public String listarpeliculas(Model model) {
         model.addAttribute("peliculas", ipeliculaService.findAll());
@@ -38,6 +39,7 @@ public class peliculaController {
     public String crearpelicula(Model model) {
         model.addAttribute("titulo", "Crear Pelicula");
         model.addAttribute("pelicula", new peliculaEntity());
+   ///     model.addAttribute("generos", igeneroService.findAll()); ////
         return "crearpelicula";
     }
 
@@ -71,7 +73,7 @@ public class peliculaController {
     }
     @GetMapping("/detallesImagenes/{id}")
     public String listarImagenesByiD(@PathVariable(value="id")Long id, Model model){
-        model.addAttribute("titulo","   Detalle pelicula");
+        model.addAttribute("titulo","Detalle");
         model.addAttribute("imagen",ipeliculaService.findOne(id));
         return "detallesImagenes";
     }
@@ -107,8 +109,11 @@ public class peliculaController {
 
     @GetMapping("/peliculas/nuevo")
     public ModelAndView mostrarFormularioDeNuevaPelicula() {
+       //// List<generoEntity> genero = igeneroService.findAll(Sort.by("pelicula.titulo")); /////
         return new ModelAndView("admin/nueva-pelicula")
-                .addObject("pelicula", new peliculaEntity());
+                .addObject("pelicula", new peliculaEntity())
+                .addObject("generos");
+
     }
 
     @PostMapping("/listarpeliculas/nuevo")
@@ -117,6 +122,8 @@ public class peliculaController {
             if(pelicula.getImagen().isEmpty()) {
                 bindingResult.rejectValue("imagen","MultipartNotEmpty");
             }
+
+        /////   List<generoEntity> generos = igeneroService.findAll(Sort.by("sinopsis")); //////
             return new ModelAndView("pelicula/index")
                     .addObject("pelicula",pelicula);
         }

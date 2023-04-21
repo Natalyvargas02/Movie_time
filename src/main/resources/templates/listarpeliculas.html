@@ -15,6 +15,7 @@
             <th>Sinopsis</th>
             <th>Fecha de estreno</th>
             <th>Youtube Trailer ID</th>
+            <th>Generos</th>
             <th>imagen</th>
             <th>portada</th>
             <th>Eliminar</th>
@@ -31,6 +32,7 @@
             <td th:text="${pelicula.sinopsis}"></td>
             <td th:text="${pelicula.fecha_estreno}"></td>
             <td th:text="${pelicula.youtube_trailer_id}"></td>
+            <td th:text="${pelicula.generos}"></td>
             <td th:text="${pelicula.estado}"></td>
             <td><img th:src="@{'/images/'} + ${pelicula.imagen}"  alt="img"  class="img-thumbnail" /></td>
 

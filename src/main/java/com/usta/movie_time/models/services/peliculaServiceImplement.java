@@ -13,13 +13,11 @@ public class peliculaServiceImplement implements IpeliculaService {
     @Autowired
     private peliculaDAO peliculaDAO;
 
-
     @Override
     @Transactional(readOnly = true)
     public List<peliculaEntity> findAll() {
         return (List<peliculaEntity>) peliculaDAO.findAll();
     }
-
 
     @Override
     @Transactional
@@ -28,13 +26,11 @@ public class peliculaServiceImplement implements IpeliculaService {
 
     }
 
-
     @Override
     @Transactional
     public void remove(Long id) {
         peliculaDAO.deleteById(id);
     }
-
 
     @Override
     @Transactional

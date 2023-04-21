@@ -38,6 +38,7 @@
         <td style="width: 65%;">
           <div th:text="${pelicula.titulo}"  class="fs-5 fw-bold"></div>
           <p th:text="${pelicula.sinopsis}"></p>
+
         </td>
         <td>
           <input type="date" id="start" name="trip-start"
@@ -46,8 +47,8 @@
         <td class="text-end">
           <a th:href="@{/editarpelicula/{id}(id=${pelicula.idpelicula})}">Editar</a>
           <a href="javascript:void(0)" class="text-danger ms-3" th:href="@{/eliminarpelicula/} + ${pelicula.idpelicula}">Eliminar</a>
-
         </td>
+
 
 
       </tr>
