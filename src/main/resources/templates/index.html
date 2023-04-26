@@ -1,37 +1,141 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en" >
-<head th:replace="~{layout/layout :: head}"></head>
+<head th:replace="~{layout/layout :: head}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="resources/static/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <title>Netflix</title>
+</head>
 <body>
 <nav th:replace="~{layout/layout :: navbar}"></nav>
-<div class="page-content">
-  <h1>Bienvenido a Movie Time</h1>
-  <p>Disfruta de los ultimos estrenos ...... </p>
-  <img class="img-responsive" th:src="@{/images/bootstrap.jpeg}"/>
-</div>
-<div class="card text-center">
-  <div class="card-header">
-    <ul class="nav nav-pills card-header-pills">
-      <li class="nav-item-">
-        <a class="nav-link active" th:href="@{/static}">Desarollo Empresarial</a>
-      </li>
-    </ul>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">PÁGINA DE PRUEBA</h5>
-    <p class="card-text">
-    <section class="content">
-      <p>
-        La Universidad Santo Tomás, Primer Claustro Universitario de Colombia, fue fundada por la Orden de Predicadores (O. P.) el 13 de junio de 1580.
-        En 1608 se fundó el Colegio Santo Tomás y posteriormente se fusionó con la Universidad de Estudios Generales. Nació así el Colegio-Universidad Santo Tomás que posteriormente se llamaría Universidad Tomística.
-        Durante casi tres siglos esta Universidad constituyó una fuente inagotable de pensamiento y cultura que formó a numerosas generaciones de neogranadinos. Entre los graduados destacados se encuentran los nombres de Andrés Rosillo (con estudios en Filosofía, Teología y Cánones), Camilo Torres, autor del célebre “Memorial de Agravios”, Francisco José de Caldas (graduado en Cánones), Francisco de Paula Santander (en Filosofía y Leyes) y Atanasio Girardot (en Cánones).
-        Se restauró en Santafé de Bogotá el día 7 de marzo de 1965 por la Provincia de San Luis BERTRÁN de Colombia, de la Orden de Predicadores, con el nombre de Universidad Santo Tomás de Colombia, con personería jurídica mediante la Resolución n.º 3645 del 6 de agosto de 1965.
+
+  <header>
+    <div class="contenedor">
+      <h2 class="logotipo">MOVIE TIME</h2>
+<nav>
+  <a href="#" class="activo">Movie time</a>
+  <a href="#">Home</a>
+  <a href="#">Películas
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item" th:href="@{/listarpeliculas}">Accion</a>
+      <a class="dropdown-item" th:href="@{/peliculas}">Peliculas</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item"  th:href="@{/listarpeliculas}">infantil</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item"  th:href="@{/ListarRoles}">Roles</a>
+    </div>
+  </a>
+
+  <a th:href="@{/listarpeliculas}">administracion</a>
+
+</nav>
+    </div>
+  </header>
+
+<main>
+  <div class="pelicula-principal">
+    <div class="contenedor">
+      <h3 class="titulo">Interestellar</h3>
+      <p class="descripcion">
+        Narra las aventuras de un grupo de exploradores que hacen uso de un agujero de gusano recientemente descubierto para superar las limitaciones de los viajes espaciales tripulados y vencer las inmensas distancias que tiene un viaje interestelar.
       </p>
-    </section>
-    </p>
-    <a href="https://www.ustatunja.edu.co/" target="_blank" class="btn btn-primary">Sigue a la USTA Tunja</a>
+      <button role="button" class="boton"><i class="fas fa-play"></i>Reproducir</button>
+      <button role="button" class="boton"><i class="fas fa-info-circle"></i>Más información</button>
+    </div>
   </div>
-</div>
-<footer th:replace="~{layout/layout :: footer}"></footer>
+
+  <div class="peliculas-recomendadas contenedor">
+    <div class="contenedor-titulo-controles">
+      <h3>Películas Recomendadas</h3>
+      <div class="indicadores"></div>
+    </div>
+
+    <div class="contenedor-principal">
+      <button role="button" id="flecha-izquierda" class="flecha-izquierda"><i class="fas fa-angle-left"></i></button>
+
+      <div class="contenedor-carousel">
+        <div class="carousel">
+          <div class="pelicula">
+            <a href="#"><img src="images/1.png" alt=""></a>
+          </div>
+          <div class="pelicula">
+            <a href="#"><img src="images/2.png" alt=""></a>
+          </div>
+          <div class="pelicula">
+            <a href="#"><img src="images/3.png" alt=""></a>
+          </div>
+          <div class="pelicula">
+            <a href="#"><img src="images/4.png" alt=""></a>
+          </div>
+          <div class="pelicula">
+            <a href="#"><img src="images/5.png" alt=""></a>
+          </div>
+          <div class="pelicula">
+            <a href="#"><img src="images/6.png" alt=""></a>
+          </div>
+          <div class="pelicula">
+            <a href="#"><img src="images/7.png" alt=""></a>
+          </div>
+          <div class="pelicula">
+            <a href="#"><img src="images/1.png" alt=""></a>
+          </div>
+          <div class="pelicula">
+            <a href="#"><img src="images/2.png" alt=""></a>
+          </div>
+          <div class="pelicula">
+            <a href="#"><img src="images/3.png" alt=""></a>
+          </div>
+          <div class="pelicula">
+            <a href="#"><img src="images/1.png" alt=""></a>
+          </div>
+          <div class="pelicula">
+            <a href="#"><img src="images/2.png" alt=""></a>
+          </div>
+          <div class="pelicula">
+            <a href="#"><img src="images/3.png" alt=""></a>
+          </div>
+          <div class="pelicula">
+            <a href="#"><img src="images/4.png" alt=""></a>
+          </div>
+          <div class="pelicula">
+            <a href="#"><img src="images/5.png" alt=""></a>
+          </div>
+          <div class="pelicula">
+            <a href="#"><img src="images/6.png" alt=""></a>
+          </div>
+          <div class="pelicula">
+            <a href="#"><img src="images/7.png" alt=""></a>
+          </div>
+          <div class="pelicula">
+            <a href="#"><img src="images/1.png" alt=""></a>
+          </div>
+          <div class="pelicula">
+            <a href="#"><img src="images/2.png" alt=""></a>
+          </div>
+          <div class="pelicula">
+            <a href="#"><img src="images/3.png" alt=""></a>
+          </div>
+          <div class="pelicula">
+            <a href="#"><img src="images/4.png" alt=""></a>
+          </div>
+        </div>
+      </div>
+
+      <button role="button" id="flecha-derecha" class="flecha-derecha"><i class="fas fa-angle-right"></i></button>
+    </div>
+  </div>
+</main>
+
+
+
+
+</main>
+
+<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+<script src="js/main.js"></script>
+
+
 </body>
 
 </html>
