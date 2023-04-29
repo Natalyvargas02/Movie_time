@@ -1,10 +1,15 @@
 package com.usta.movie_time.controllers;
 
+import com.usta.movie_time.entities.peliculaEntity;
 import com.usta.movie_time.models.services.IpeliculaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class pageController {
@@ -13,10 +18,11 @@ public class pageController {
     @Autowired
     private IpeliculaService ipeliculaService;
 
-    @GetMapping("/acerca")
-    public String acercaade(Model model){
+
+    @GetMapping("/estrenos")
+    public String estrenos(Model model){
         model.addAttribute("titulo","Acerca de");
-        return "acerca";
+        return "estrenos";
     }
     @GetMapping("/pensum")
     public String pensum(Model model){

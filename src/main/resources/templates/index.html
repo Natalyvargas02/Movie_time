@@ -14,8 +14,10 @@
     <div class="contenedor">
       <h2 class="logotipo">MOVIE TIME</h2>
 <nav>
-  <a href="#" class="activo">Movie time</a>
+  <!--
   <a href="#">Home</a>
+  -->
+
   <a href="#">Películas
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
       <a class="dropdown-item" th:href="@{/listarpeliculas}">Accion</a>
@@ -27,6 +29,7 @@
     </div>
   </a>
 
+  <a href="#">Usuario</a>
   <a th:href="@{/listarpeliculas}">administracion</a>
 
 </nav>
@@ -47,7 +50,7 @@
 
   <div class="peliculas-recomendadas contenedor">
     <div class="contenedor-titulo-controles">
-      <h3>Películas Recomendadas</h3>
+      <h3>Top Movies</h3>
       <div class="indicadores"></div>
     </div>
 
@@ -128,14 +131,7 @@
 </main>
 
 
-
-
-</main>
-
 <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 <script src="js/main.js"></script>
-
-
 </body>
-
 </html>
