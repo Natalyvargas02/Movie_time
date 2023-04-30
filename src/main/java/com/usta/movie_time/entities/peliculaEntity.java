@@ -37,12 +37,7 @@ public class peliculaEntity implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fecha_estreno;
 
-    @NotEmpty
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "genero_pelicula",
-            joinColumns = @JoinColumn(name="id_pelicula"),
-            inverseJoinColumns = @JoinColumn(name="id_genero"))
-    private List<generoEntity> generos;
+
 
     @NotNull
     @Size(min = 1, max = 20)
@@ -113,12 +108,6 @@ public class peliculaEntity implements Serializable {
         this.youtube_trailer_id = youtube_trailer_id;
     }
 
-    public List<generoEntity> getGeneros() {
-        return generos;
-    }
 
-    public void setGeneros(List<generoEntity> generos) {
-        this.generos = generos;
-    }
 }
 

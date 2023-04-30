@@ -15,54 +15,68 @@
   <div class="container__cards">
   <div class="card">
     <div class="cover">
-      <img src="images/p1.png" alt="">
-      <div class="img__back"></div>
-    </div>
-    <div class="description">
-      <h2>Rapidos y furiosos</h2>
-      <p> una venganza sangrienta, decidida a destrozar a esta familia y destruir todo, a los que Dom ama, para siempre</p>
-      <input type="button" value="Leer Más">
-    </div>
-  </div>
-
-
-  <div class="card">
-    <div class="cover">
-      <img src="images/p2.png" alt="">
-      <div class="img__back"></div>
-    </div>
-    <div class="description">
-      <h2>Elon Musk</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, laboriosam.</p>
-      <input type="button" value="Leer Más">
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="cover">
-      <img src="images/p3.png" alt="">
-      <div class="img__back"></div>
-    </div>
-    <div class="description">
-      <h2>Aya Nakamura</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, laboriosam.</p>
-      <input type="button" value="Leer Más">
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="cover">
       <img src="images/rapido.jpg" alt="">
       <div class="img__back"></div>
     </div>
     <div class="description">
-      <h2>El cacas</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, laboriosam.</p>
-      <input type="button" value="Leer Más">
+      <h2>Rápidos y Furiosos X</h2>
+      <p> una venganza sangrienta para destruir todo, a los que Dom ama, para siempre</p>
+      <input type="button" value="Ver Trailer">
     </div>
   </div>
+
+
+  <div class="card">
+    <div class="cover">
+      <img src="images/guardianes.jpeg"alt="">
+      <div class="img__back"></div>
+    </div>
+    <div class="description">
+      <h2> Guardianes de la Galaxia vol. 3</h2>
+      <p> sus vidas no tardan en verse alteradas por los ecos del turbulento pasado de Rocket</p>
+      <input type="button" value="Ver Trailer">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="cover">
+      <img src="images/No lo dejes salir.jpg"  alt="">
+      <div class="img__back"></div>
+    </div>
+    <div class="description">
+      <h2> Tu Miedo Es Real</h2>
+      <p>un paciente desesperado se presenta inesperadamente en su casa en busca de ayuda</p>
+      <input type="button" value="Ver Trailer">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="cover">
+      <img src="images/Hijos de perra.png"   alt="">
+      <div class="img__back"></div>
+    </div>
+    <div class="description">
+      <h2>Hijos De Perra</h2>
+      <p>Dicen que el perro es el mejor amigo del hombre, pero ¿qué pasa si el hombre es un completo idiota? </p>
+      <input type="button" value="Ver Trailer">
+    </div>
+  </div>
+
+    <div class="card">
+      <div class="cover" th:each="pelicula : ${ultimasPeliculas}" th:object="${pelicula}">
+        <a th:href="@{/pelicula/{id}(id=${pelicula.idpelicula})}">
+          <a th:src="@{'/images/' + ${pelicula.imagen}}" th:alt="*{pelicula.titulo}">
+          <div class="card-body">
+            <h2 class="card-title fs-6" th:text="*{pelicula.titulo}"></h2>
+            <p th:text="*{#temporals.format(fechaEstreno,'dd/MM/yyyy')}" class="text-muted small"></p>
+          </div>
+        </a>
+      </div>
+    </div>
 
 </div>
 <footer th:replace="~{layout/layout :: footer}"></footer>
 </body>
 </html>
+
+

@@ -18,16 +18,12 @@
   <a href="#">Home</a>
   -->
 
-  <a href="#">Películas
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      <a class="dropdown-item" th:href="@{/listarpeliculas}">Accion</a>
-      <a class="dropdown-item" th:href="@{/peliculas}">Peliculas</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item"  th:href="@{/listarpeliculas}">infantil</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item"  th:href="@{/ListarRoles}">Roles</a>
-    </div>
-  </a>
+
+
+
+  <a th:href="@{/peliculas}">Peliculas</a>
+
+  <a th:href="@{/estrenos}">ultimos estrenos</a>
 
   <a href="#">Usuario</a>
   <a th:href="@{/listarpeliculas}">administracion</a>

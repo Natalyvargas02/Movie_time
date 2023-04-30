@@ -9,6 +9,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -19,11 +20,7 @@ public class pageController {
     private IpeliculaService ipeliculaService;
 
 
-    @GetMapping("/estrenos")
-    public String estrenos(Model model){
-        model.addAttribute("titulo","Acerca de");
-        return "estrenos";
-    }
+
     @GetMapping("/pensum")
     public String pensum(Model model){
         model.addAttribute("titulo","Pensum");
@@ -41,6 +38,16 @@ public class pageController {
         model.addAttribute("titulo","index");
         return "peliculas";
     }
+
+    @GetMapping("Estrenos1")
+    public String Estrenos1(Model model){
+        model.addAttribute("peliculas", ipeliculaService.findAll());
+        model.addAttribute("titulo","index");
+        return "Estrenos1";
+    }
+
+
+
 
 
 }

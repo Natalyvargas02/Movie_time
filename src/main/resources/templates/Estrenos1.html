@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{listarpeliculas.html}">
+
+<head th:replace="~{layout/layout :: head}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efecto Hover Parallax - MagtimusPro</title>
+    <link rel="stylesheet" href="resources/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap">
+</head>
+
+<body>
+<nav th:replace="~{layout/layout :: navbar}"></nav>
+<div class="page-content">
+
+    <div layout:fragment="content">
+        <h2>ultimos Estrenos</h2>
+        <div class="text-end">
+            <a href="/listarpeliculas" class="btn btn-primary mb-3">
+                Ultimos estrenos </a>
+        </div>
+
+        <div class="wrapper">
+
+            <div class="box">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+
+        <div class="container__cards">
+            <div class="card">
+                <div class="cover">
+                    <img src="images/rapido.jpg" alt="">
+                    <div class="img__back"></div>
+                </div>
+                <div class="description">
+                    <h2>Rápidos y Furiosos X</h2>
+                    <p> una venganza sangrienta para destruir todo, a los que Dom ama, para siempre</p>
+                    <input type="button" value="Ver Trailer">
+                </div>
+            </div>
+
+            <div class="container__cards"
+              th:each="pelicula : ${peliculas}" th:object="${peliculas}"
+              th:href="@{/pelicula/{id}(id=${pelicula.idpelicula})}">
+                <div class="card">
+                    <div class="cover">
+                        <img th:src="@{'/images/' + ${pelicula.imagen}}" alt="" >
+                        <div class="img__back"></div>
+                    </div>
+
+                    <div class="description">
+                       <h2 th:text="${pelicula.titulo}"</h2>
+                    </div>
+
+                    <div class="description">
+                        <p th:text="${pelicula.sinopsis}"</p>
+                    </div>
+
+
+                    <div class="description">
+                        <input type="date" id="start" name="trip-start"
+                               th:value="${pelicula.fecha_estreno}" readonly style="border: 0;" />
+                    </div>
+
+
+
+
+                    <div class="description">
+                        <input type="button" value="Ver Trailer">
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
