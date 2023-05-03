@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{listarpeliculas.html}">
+
 <head th:replace="~{layout/layout :: head}">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,22 +11,21 @@
   <title>Netflix</title>
 </head>
 <body>
-<nav th:replace="~{layout/layout :: navbar}"></nav>
+
 
   <header>
     <div class="contenedor">
       <h2 class="logotipo">MOVIE TIME</h2>
-<nav>
+
+
+
+      <nav>
   <!--
   <a href="#">Home</a>
   -->
-
-
-
-
   <a th:href="@{/peliculas}">Peliculas</a>
 
-  <a th:href="@{/estrenos}">ultimos estrenos</a>
+  <a th:href="@{/Estrenos1}">ultimos estrenos</a>
 
   <a href="#">Usuario</a>
   <a th:href="@{/listarpeliculas}">administracion</a>
@@ -40,7 +42,9 @@
         Narra las aventuras de un grupo de exploradores que hacen uso de un agujero de gusano recientemente descubierto para superar las limitaciones de los viajes espaciales tripulados y vencer las inmensas distancias que tiene un viaje interestelar.
       </p>
       <button role="button" class="boton"><i class="fas fa-play"></i>Reproducir</button>
-      <button role="button" class="boton"><i class="fas fa-info-circle"></i>Más información</button>
+      <a th:href="@{/detallesImagenes/{id}(id=40)}"><button role="button" class="boton"><i class="fas fa-info-circle"></i>Más información</button></a>
+
+
     </div>
   </div>
 
@@ -56,8 +60,9 @@
       <div class="contenedor-carousel">
         <div class="carousel">
           <div class="pelicula">
-            <a href="#"><img src="images/1.png" alt=""></a>
+            <a th:href="@{/detallesImagenes/{id}(id=40)}"><img src="images/1.png" alt=""></a>
           </div>
+
           <div class="pelicula">
             <a href="#"><img src="images/2.png" alt=""></a>
           </div>
