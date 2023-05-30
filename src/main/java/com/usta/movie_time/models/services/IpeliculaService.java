@@ -17,6 +17,7 @@ public interface IpeliculaService {
 
     public peliculaEntity findOne(Long id);
 
+    public List<peliculaEntity> topPelis();
 }
 
 

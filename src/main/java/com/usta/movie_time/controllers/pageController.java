@@ -39,12 +39,12 @@ public class pageController {
         return "peliculas";
     }
 
-    @GetMapping("Estrenos1")
+    /*@GetMapping("Estrenos1")
     public String Estrenos1(Model model){
         model.addAttribute("peliculas", ipeliculaService.findAll());
         model.addAttribute("titulo","index");
         return "Estrenos1";
-    }
+    }*/
 
 
 

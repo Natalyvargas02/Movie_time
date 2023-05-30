@@ -145,5 +145,10 @@ public class peliculaController {
         return "redirect:/listarpeliculas";
     }
 
-
+    @GetMapping("/Estrenos1")
+    public String topPelis1(Model model) {
+        model.addAttribute("topPelis", ipeliculaService.topPelis());
+        model.addAttribute("titulos", "Ultimos estrenos");
+        return "/Estrenos1";
+    }
 }

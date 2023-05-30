@@ -19,6 +19,9 @@ public interface peliculaDAO extends CrudRepository<peliculaEntity,Long> {
     @Modifying
     @Query("SELECT uni FROM peliculaEntity uni WHERE uni.idpelicula NOT IN(SELECT pel.idpelicula FROM peliculaEntity pel)")
     public List<peliculaEntity> selectOnePel();
+
+    @Transactional
+    @Modifying
+    @Query("SELECT uni FROM peliculaEntity uni ORDER BY uni.fecha_estreno DESC LIMIT 8")
+    public List<peliculaEntity> topPelis();
 }
-
-

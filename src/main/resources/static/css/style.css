@@ -450,7 +450,14 @@ color: #FFF;
     .peliculas-recomendadas .flecha-derecha {
         display: none;
     }
----------------------------------------------------------------------------
+-------------------------------detalles imagenes--------------------------------------------
+.detallespeli img{
+    position: absolute;
+    width: 300px;
+    height: 510px;
+    left: 61.4px;
+    top: 31px;
+}
 
 
     -------------------------------------------------------------------

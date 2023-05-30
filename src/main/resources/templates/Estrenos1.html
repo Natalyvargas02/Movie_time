@@ -37,25 +37,9 @@
             </div>
         </div>
 
-
-        <div class="container__cards">
-            <div class="card">
-                <div class="cover">
-                    <img src="images/rapido.jpg" alt="">
-                <div class="img__back"></div>
-            </div>
-                <div class="description">
-                    <h2>Rápidos y Furiosos X</h2>
-                    <p> una venganza sangrienta para destruir todo, a los que Dom ama, para siempre</p>
-                    <input type="button" value="Ver Trailer">
-                </div>
-            </div>
-        </div>
-
-
         <div class="container__cards">
             <div class="card"
-                 th:each="pelicula : ${peliculas}" th:object="${peliculas}"
+                 th:each="pelicula : ${topPelis}" th:object="${peliculas}"
                  th:href="@{/pelicula/{id}(id=${pelicula.idpelicula})}">
 
                 <div class="cover">

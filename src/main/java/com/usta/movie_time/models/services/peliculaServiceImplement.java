@@ -20,6 +20,10 @@ public class peliculaServiceImplement implements IpeliculaService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public List<peliculaEntity> topPelis() { return (List<peliculaEntity>) peliculaDAO.topPelis(); }
+
+    @Override
     @Transactional
     public void save(peliculaEntity pelicula) {
         peliculaDAO.save(pelicula);
@@ -50,7 +54,6 @@ public class peliculaServiceImplement implements IpeliculaService {
     public peliculaEntity findOne(Long id) {
         return peliculaDAO.findById(id).orElse(null);
     }
-
 
     @Transactional(readOnly = true)
     public List<peliculaEntity> selectOnePel() {
